@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.550/pdf.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <% include ../partials/header-viewer %>
+    </header>
+
+    <div class="container">
+        <div class="container-canvas" style="width: 800px; margin: auto;">
+            <canvas id="the-canvas"></canvas>
+        </div>
+    </div>
+
+    <script src="/javascripts/pdf.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+           
+
+            $(".input-width").change(function () {
+                $(".container-canvas").width($(this).val())
+                desiredWidth = $(this).val();
+
+                var page_num = parseInt(jQuery("#page_num").text());
+                renderPage(page_num, desiredWidth);
+            });
+
+
+           
+
+        });
+    </script>
+</body>
+
+</html>
