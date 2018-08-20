@@ -21,10 +21,8 @@
     <script src="/javascripts/pdf.js"></script>
     <script>
         jQuery(document).ready(function () {
-           
 
             $(".input-width").change(function () {
-                $(".container-canvas").width($(this).val())
                 desiredWidth = $(this).val();
 
                 var page_num = parseInt(jQuery("#page_num").text());
@@ -32,7 +30,28 @@
             });
 
 
-           
+            $('#width-percent').change(function () {
+                if ($(this).val() == "custom") {
+                    $('.input-width').css("display", "inline-block");
+                } else {
+                    $('.input-width').css("display", "none");
+
+                    if ($(this).val() == "full-height") {
+                        var whA4 = 21 / 29.7; // TODO : change that because it is only for A4
+                        var height = $(window).height() - 100;
+                        width = whA4 * height
+
+                    } else if ($(this).val() == "full-width") {
+                        width = $(window).width() - 100;
+                        $('.container').css("max-width", width)
+                    }
+
+                    $(".input-width").val(width)
+                    var page_num = parseInt(jQuery("#page_num").text());
+                    renderPage(page_num, width);
+
+                }
+            });
 
         });
     </script>

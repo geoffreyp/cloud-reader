@@ -19,6 +19,7 @@ var pdfDoc = null,
 * @param num Page number.
 */
 function renderPage(num, desiredWidth) {
+  $(".container-canvas").width(desiredWidth)
   pageRendering = true;
   // Using promise to fetch the page
   pdfDoc.getPage(num).then(function (page) {

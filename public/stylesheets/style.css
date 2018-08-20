@@ -21,3 +21,11 @@ header {
     padding: 10px;
     width: 450px;
 }
+
+.page-link {
+    display: inline-block !important;
+}
+
+.input-width {
+    display: none;
+}

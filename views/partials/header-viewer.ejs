@@ -6,17 +6,30 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mr-auto" style="margin:auto">
-                <div class="nav-box">
-                    <button id="prev">Previous</button>
-                    <button id="next">Next</button>
-                    &nbsp; &nbsp;
-                    <span>Page: <span id="page_num"></span> / <span id="page_count"></span></span>
-                    <input class="input-width" value="800" type="number" />
-                </div>
+        <div class="navbar-nav mr-auto" style="margin:auto">
+            <div class="nav-box">
+                <a id="prev" class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <span><span id="page_num"></span> / <span id="page_count"></span></span>
+                <a id="next" class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+                <select name="width-percent" id="width-percent">
+                    <option value=""></option>
+                    <option value="full-width">full width</option>
+                    <option value="full-height">full height</option>
+                    <option value="custom">custom</option>
+                </select>
+
+                <input class="input-width" value="800" type="number" />
             </div>
+        </div>
         <ul class="navbar-nav mt-2 mt-md-0">
-            <li class="nav-item">   
+            <li class="nav-item">
                 <a class="nav-link" href="#">Login</a>
             </li>
         </ul>
