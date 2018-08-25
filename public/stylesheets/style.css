@@ -29,3 +29,6 @@ header {
 .input-width {
     display: none;
 }
+.logged-as{
+    color: white;
+}
