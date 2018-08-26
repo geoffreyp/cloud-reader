@@ -29,15 +29,20 @@
             </div>
         </div>
         <ul class="navbar-nav mt-2 mt-md-0">
-            <li class="nav-item">
-                <% if (user) { %>
-                    <span class="logged-as">Logged as <%= user.username %></span>
-                    <a class="nav-link" href="/account/disconnect">Disconnect</a>
-                    <% } else{ %>
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#login">Login</a>
+            <% if (user) { %>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#upload_modal">Upload new file</a>
+                </li>
+                <% } %>
+                    <li class="nav-item">
+                        <% if (user) { %>
+                            <span class="logged-as">Logged as <%= user.username %></span>
+                            <a class="nav-link" href="/account/disconnect">Disconnect</a>
+                            <% } else{ %>
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#login">Login</a>
 
-                        <% } %>
-            </li>
+                                <% } %>
+                    </li>
         </ul>
         <!-- <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" placeholder="Search" aria-label="Search" type="text">
