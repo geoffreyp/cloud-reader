@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/head %>
-  </head>
-  <body>
 
-    <header>
-        <% include ../partials/header %>
-    </header>
-    <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Welcome to alpha release !</h1>
-          <p class="lead text-muted">It is the good place to test the futurist cloud pdf viewer</p>
-          <p>
-            <a href="/viewer" class="btn btn-primary my-2">Access to pdf viewer here</a>
-          </p>
-        </div>
-      </section>
-    <% include ../partials/footer %>
-  </body>
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Welcome to alpha release !</h1>
+      <p class="lead text-muted">It is the good place to test the futurist cloud pdf viewer</p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Access to pdf viewer by clicking on file : </a>
+      </p>
+      <ul>
+        <% files.forEach(function(file) { %>
+          <li><a href="/viewer/<%= file.id %>"><%= file.name %> </a></li>
+          <% }); %>
+      </ul>
+    </div>
+  </section>
+  <% include ../partials/footer %>
+</body>
+
 </html>

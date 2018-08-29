@@ -1,4 +1,4 @@
-var url = 'files/test.pdf';
+var url = $('#url_viewer').val().replace(/ /g, "_").replace('public','');
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
