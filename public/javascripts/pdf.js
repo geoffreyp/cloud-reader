@@ -1,4 +1,5 @@
-var url = $('#url_viewer').val().replace(/ /g, "_").replace('public','');
+var url = $('#url_viewer').val().replace(/ /g, "_").replace('public', '');
+var connected = true;
 
 // Loaded via <script> tag, create shortcut to access PDF.js exports.
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -74,6 +75,7 @@ function onPrevPage() {
   }
   pageNum--;
   queueRenderPage(pageNum);
+  saveProgress(pageNum);
 }
 
 /**
@@ -85,10 +87,26 @@ function onNextPage() {
   }
   pageNum++;
   queueRenderPage(pageNum);
+  saveProgress(pageNum);
 }
 
 document.getElementById('prev').addEventListener('click', onPrevPage);
 document.getElementById('next').addEventListener('click', onNextPage);
+
+function saveProgress(pageNum) {
+  var pageURL = window.location.href;
+  var lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1).replace('#', '');
+
+  if (connected) {
+    jQuery.post("/viewer/save", { id: lastURLSegment, page: pageNum })
+      .done(function (data) {
+        if (data.error && data.code === "no_connected") {
+          $('#warning-loggin').fadeIn();
+          connected = false;
+        }
+      });
+  }
+}
 
 /**
  * Asynchronously downloads PDF.

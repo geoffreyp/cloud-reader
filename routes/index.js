@@ -38,4 +38,15 @@ router.get('/viewer/:id', function (req, res, next) {
   });
 });
 
+router.post('/viewer/save', function (req, res, next) {
+  var id = req.body.id;
+  var page = req.body.page;
+  if (!id || !page) {
+    res.json({ error: "parameters undefined", code: "para_undef" });
+  }
+  if (!req.user) {
+    res.json({ error: "user not connected", code: "no_connected" });
+  }
+});
+
 module.exports = router;
