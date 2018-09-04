@@ -26,43 +26,47 @@
     </div>
 
     <% include ../partials/footer %>
+        <script>
+            <% if (progress != -1) { %> pageNum = <%= progress %>
+            <% } else { %> pageNum = 1 <% }  %>
 
+        </script>
         <script src="/javascripts/pdf.js"></script>
         <script>
-            jQuery(document).ready(function () {
+                jQuery(document).ready(function () {
 
-                $(".input-width").change(function () {
-                    desiredWidth = $(this).val();
+                    $(".input-width").change(function () {
+                        desiredWidth = $(this).val();
 
-                    var page_num = parseInt(jQuery("#page_num").text());
-                    renderPage(page_num, desiredWidth);
-                });
-
-
-                $('#width-percent').change(function () {
-                    if ($(this).val() == "custom") {
-                        $('.input-width').css("display", "inline-block");
-                    } else {
-                        $('.input-width').css("display", "none");
-
-                        if ($(this).val() == "full-height") {
-                            var whA4 = 21 / 29.7; // TODO : change that because it is only for A4
-                            var height = $(window).height() - 100;
-                            width = whA4 * height
-
-                        } else if ($(this).val() == "full-width") {
-                            width = $(window).width() - 100;
-                            $('.container').css("max-width", width)
-                        }
-
-                        $(".input-width").val(width)
                         var page_num = parseInt(jQuery("#page_num").text());
-                        renderPage(page_num, width);
+                        renderPage(page_num, desiredWidth);
+                    });
 
-                    }
+
+                    $('#width-percent').change(function () {
+                        if ($(this).val() == "custom") {
+                            $('.input-width').css("display", "inline-block");
+                        } else {
+                            $('.input-width').css("display", "none");
+
+                            if ($(this).val() == "full-height") {
+                                var whA4 = 21 / 29.7; // TODO : change that because it is only for A4
+                                var height = $(window).height() - 100;
+                                width = whA4 * height
+
+                            } else if ($(this).val() == "full-width") {
+                                width = $(window).width() - 100;
+                                $('.container').css("max-width", width)
+                            }
+
+                            $(".input-width").val(width)
+                            var page_num = parseInt(jQuery("#page_num").text());
+                            renderPage(page_num, width);
+
+                        }
+                    });
+
                 });
-
-            });
         </script>
 </body>
 
