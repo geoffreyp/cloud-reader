@@ -15,8 +15,13 @@
       <h1 class="jumbotron-heading">Welcome to alpha release !</h1>
       <p class="lead text-muted">It is the good place to test the futurist cloud pdf viewer</p>
       <p>
-        <a href="#" class="btn btn-primary my-2">Access to pdf viewer by clicking on file : </a>
+        <a href="#" class="btn btn-primary my-2">Test the pdf viewer with public files hosted here</a>
       </p>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <h1>All public files</h1>
       <ul>
         <% files.forEach(function(file) { %>
           <li><a href="/viewer/<%= file.id %>"><%= file.name %> </a></li>
